@@ -563,7 +563,7 @@ export default class Carousel extends Component {
             };
 
             if (!this._shouldAnimateSlides(props)) {
-                animatedValue = 1;
+                animatedValue = new Animated.Value(1);
             } else if (this._shouldUseCustomAnimation()) {
                 animatedValue = new Animated.Value(_index === this._activeItem ? 1 : 0);
             } else {
