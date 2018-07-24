@@ -710,7 +710,7 @@ export default class Carousel extends Component {
         this._snapToItem(repositionTo, false, false, false, false);
     }
 
-    _scrollTo (offset, animated = true) {
+    _scrollTo (offset, animated = true, index:number = -1) {
         const { vertical } = this.props;
         const wrappedRef = this._getWrappedRef();
 
@@ -732,7 +732,9 @@ export default class Carousel extends Component {
         if (this._needsScrollView()) {
             wrappedRef.scrollTo(options);
         } else {
-            wrappedRef.scrollToOffset(options);
+            if(index === 0 || options.offset > 0){
+                wrappedRef.scrollToOffset(options);
+            }
         }
     }
 
@@ -992,7 +994,7 @@ export default class Carousel extends Component {
             return;
         }
 
-        this._scrollTo(this._scrollOffsetRef, animated);
+        this._scrollTo(this._scrollOffsetRef, animated, index);
 
         if (enableMomentum) {
             // iOS fix, check the note in the constructor
