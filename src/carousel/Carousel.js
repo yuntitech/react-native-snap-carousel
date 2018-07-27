@@ -1306,7 +1306,7 @@ export default class Carousel extends Component {
                 }
             </AnimatedScrollView>
         ) : (
-            <AnimatedFlatList {...props} getItemLayout={this.props.getItemLayout}/>
+            <AnimatedFlatList {...props} getItemLayout={this.props.getItemLayout} initialScrollIndex={this.props.initialScrollIndex} />
         );
     }
 }
